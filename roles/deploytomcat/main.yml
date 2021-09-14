@@ -1,0 +1,10 @@
+---
+- name: start tomcat
+  command: "nohup /opt/apache-tomcat-7.0.61/bin/catalina.sh start"
+- name: Deploying war file from nexus repo
+  become: true
+  get_url:
+    url: http://35.170.168.238:8082/artifactory/example-repo-local/iwayQApp-1.0-RELEASE-39.war
+          #url: http://35.170.168.238:8081/artifactory/example-repo-local/iwayQApp-1.0-RELEASE-$BUILD_ID.waiwayQApp-1.0-RELEASE-39.warr
+    #dest: /opt/apache-tomcat-7.0.61/webapps
+    dest: /tmp/
